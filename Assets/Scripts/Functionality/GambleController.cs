@@ -7,385 +7,377 @@ using DG.Tweening;
 
 public class GambleController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject gamble_game;
-    [SerializeField]
-    private Button doubleButton;
-    [SerializeField]
-    private SocketIOManager socketManager;
-    [SerializeField]
-    private AudioController audioController;
-    [SerializeField]
-    internal List<CardFlip> allcards = new List<CardFlip>();
-    [SerializeField]
-    private TMP_Text winamount;
-    [SerializeField]
-    private SlotBehaviour slotController;
-    [SerializeField]
-    private Sprite[] HeartSpriteList;
-    [SerializeField]
-    private Sprite[] ClubSpriteList;
-    [SerializeField]
-    private Sprite[] SpadeSpriteList;
-    [SerializeField]
-    private Sprite[] DiamondSpriteList;
-    [SerializeField]
-    private Sprite cardCover;
-    [SerializeField]
-    private CardFlip DealerCard_Script;
+  [SerializeField]
+  private GameObject gamble_game;
+  [SerializeField]
+  private Button doubleButton;
+  [SerializeField]
+  private SocketIOManager socketManager;
+  [SerializeField]
+  private AudioController audioController;
+  [SerializeField]
+  internal List<CardFlip> allcards = new List<CardFlip>();
+  [SerializeField]
+  private TMP_Text winamount;
+  [SerializeField]
+  private SlotBehaviour slotController;
+  [SerializeField]
+  private Sprite[] HeartSpriteList;
+  [SerializeField]
+  private Sprite[] ClubSpriteList;
+  [SerializeField]
+  private Sprite[] SpadeSpriteList;
+  [SerializeField]
+  private Sprite[] DiamondSpriteList;
+  [SerializeField]
+  private Sprite cardCover;
+  [SerializeField]
+  private CardFlip DealerCard_Script;
 
-    [SerializeField]
-    private GameObject loadingScreen;
-    [SerializeField]
-    private GameObject GambleEnd_Object;
-    [SerializeField]
-    private Button DoubleEnd_Button;
-    [SerializeField]
-    private Button CollectEnd_Button;
-    [SerializeField]
-    private Image slider;
+  [SerializeField]
+  private GameObject loadingScreen;
+  [SerializeField]
+  private GameObject GambleEnd_Object;
+  [SerializeField]
+  private Button DoubleEnd_Button;
+  [SerializeField]
+  private Button CollectEnd_Button;
+  [SerializeField]
+  private Image slider;
 
-    private Sprite highcard_Sprite;
-    private Sprite lowcard_Sprite;
-    private Sprite spare1card_Sprite;
-    private Sprite spare2card_Sprite;
+  private Sprite highcard_Sprite;
+  private Sprite lowcard_Sprite;
+  private Sprite spare1card_Sprite;
+  private Sprite spare2card_Sprite;
+  private Tweener Gamble_Tween_Scale = null;
+  
+  internal bool gambleStart = false;
+  internal bool isResult = false;
+  [SerializeField] private bool isAutoSpinOn;
 
-    private Tweener Gamble_Tween_Scale = null;
-    private Tweener Gamble_Tween_Move = null;
-
-    private Vector3 m_Temp_GambleButton;
-
-    internal bool gambleStart = false;
-    internal bool isResult = false;
-    [SerializeField] private bool isAutoSpinOn;
-
-    private void Start()
+  private void Start()
+  {
+    if (GambleEnd_Object) GambleEnd_Object.SetActive(false);
+    if (doubleButton) doubleButton.onClick.RemoveAllListeners();
+    if (doubleButton) doubleButton.onClick.AddListener(delegate
     {
-        if (GambleEnd_Object) GambleEnd_Object.SetActive(false);
-        if (doubleButton) doubleButton.onClick.RemoveAllListeners();
-        if (doubleButton) doubleButton.onClick.AddListener(delegate
-        {
-            audioController.PlayButtonAudio();
-            StartGamblegame();
-        });
-        if (DoubleEnd_Button) DoubleEnd_Button.onClick.RemoveAllListeners();
-        if (DoubleEnd_Button) DoubleEnd_Button.onClick.AddListener(delegate
-        {
-            audioController.PlayButtonAudio();
-            NormalCollectFunction();
-            StartGamblegame(true);
-        });
-        if (CollectEnd_Button) CollectEnd_Button.onClick.RemoveAllListeners();
-        if (CollectEnd_Button) CollectEnd_Button.onClick.AddListener(() =>
-        {
-            audioController.PlayButtonAudio();
-            OnReset();
-        });
-        toggleDoubleButton(false);
+      audioController.PlayButtonAudio();
+      StartGamblegame();
+    });
+    if (DoubleEnd_Button) DoubleEnd_Button.onClick.RemoveAllListeners();
+    if (DoubleEnd_Button) DoubleEnd_Button.onClick.AddListener(delegate
+    {
+      audioController.PlayButtonAudio();
+      NormalCollectFunction();
+      StartGamblegame(true);
+    });
+    if (CollectEnd_Button) CollectEnd_Button.onClick.RemoveAllListeners();
+    if (CollectEnd_Button) CollectEnd_Button.onClick.AddListener(() =>
+    {
+      audioController.PlayButtonAudio();
+      OnReset();
+    });
+    toggleDoubleButton(false);
+  }
+
+  internal void toggleDoubleButton(bool toggle)
+  {
+    doubleButton.interactable = toggle;
+  }
+
+  private void OnReset()
+  {
+    if (slotController) slotController.GambleCollect();
+    if (isAutoSpinOn)
+    {
+      isAutoSpinOn = false;
+      slotController.AutoSpin();
+    }
+    NormalCollectFunction();
+  }
+
+  void StartGamblegame(bool isRepeat = false)
+  {
+    if (GambleEnd_Object) GambleEnd_Object.SetActive(false);
+    GambleTweeningAnim(false);
+    if (!isRepeat)
+    {
+      winamount.text = "0";
+      isAutoSpinOn = slotController.IsAutoSpin;
+    }
+    slotController.DeactivateGamble();
+    if (audioController) audioController.PlayButtonAudio();
+    if (gamble_game) gamble_game.SetActive(true);
+    loadingScreen.SetActive(true);
+    StartCoroutine(loadingRoutine());
+    StartCoroutine(GambleCoroutine());
+  }
+
+  internal void GambleTweeningAnim(bool IsStart)
+  {
+    if (IsStart)
+    {
+      Gamble_Tween_Scale = doubleButton.gameObject.GetComponent<RectTransform>().DOScale(new Vector2(1.18f, 1.18f), 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(0);
+    }
+    else
+    {
+      Gamble_Tween_Scale.Kill();
+      doubleButton.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
+    }
+  }
+
+
+  private void ComputeCards()
+  {
+    highcard_Sprite = CardSet(socketManager.myMessage.highCard.suit, socketManager.myMessage.highCard.value);
+    lowcard_Sprite = CardSet(socketManager.myMessage.lowCard.suit, socketManager.myMessage.lowCard.value);
+    spare1card_Sprite = CardSet(socketManager.myMessage.exCards[0].suit, socketManager.myMessage.exCards[0].value);
+    spare2card_Sprite = CardSet(socketManager.myMessage.exCards[1].suit, socketManager.myMessage.exCards[1].value);
+  }
+
+  private Sprite CardSet(string suit, string value)
+  {
+    Sprite tempSprite = null;
+    if (suit.ToUpper() == "HEARTS")
+    {
+      if (value.ToUpper() == "A")
+      {
+        tempSprite = HeartSpriteList[0];
+      }
+      else if (value.ToUpper() == "K")
+      {
+        tempSprite = HeartSpriteList[12];
+      }
+      else if (value.ToUpper() == "Q")
+      {
+        tempSprite = HeartSpriteList[11];
+      }
+      else if (value.ToUpper() == "J")
+      {
+        tempSprite = HeartSpriteList[10];
+      }
+      else
+      {
+        int myval = int.Parse(value);
+        tempSprite = HeartSpriteList[myval - 1];
+      }
+    }
+    else if (suit.ToUpper() == "DIAMONDS")
+    {
+      if (value.ToUpper() == "A")
+      {
+        tempSprite = DiamondSpriteList[0];
+      }
+      else if (value.ToUpper() == "K")
+      {
+        tempSprite = DiamondSpriteList[12];
+      }
+      else if (value.ToUpper() == "Q")
+      {
+        tempSprite = DiamondSpriteList[11];
+      }
+      else if (value.ToUpper() == "J")
+      {
+        tempSprite = DiamondSpriteList[10];
+      }
+      else
+      {
+        int myval = int.Parse(value);
+        tempSprite = DiamondSpriteList[myval - 1];
+      }
+    }
+    else if (suit.ToUpper() == "CLUBS")
+    {
+      if (value.ToUpper() == "A")
+      {
+        tempSprite = ClubSpriteList[0];
+      }
+      else if (value.ToUpper() == "K")
+      {
+        tempSprite = ClubSpriteList[12];
+      }
+      else if (value.ToUpper() == "Q")
+      {
+        tempSprite = ClubSpriteList[11];
+      }
+      else if (value.ToUpper() == "J")
+      {
+        tempSprite = ClubSpriteList[10];
+      }
+      else
+      {
+        int myval = int.Parse(value);
+        tempSprite = ClubSpriteList[myval - 1];
+      }
+    }
+    else if (suit.ToUpper() == "SPADES")
+    {
+      if (value.ToUpper() == "A")
+      {
+        tempSprite = SpadeSpriteList[0];
+      }
+      else if (value.ToUpper() == "K")
+      {
+        tempSprite = SpadeSpriteList[12];
+      }
+      else if (value.ToUpper() == "Q")
+      {
+        tempSprite = SpadeSpriteList[11];
+      }
+      else if (value.ToUpper() == "J")
+      {
+        tempSprite = SpadeSpriteList[10];
+      }
+      else
+      {
+        int myval = int.Parse(value);
+        tempSprite = SpadeSpriteList[myval - 1];
+      }
+    }
+    else
+    {
+      Debug.LogError("Bad Value");
+    }
+    return tempSprite;
+  }
+
+  IEnumerator GambleCoroutine()
+  {
+    for (int i = 0; i < allcards.Count; i++)
+    {
+      allcards[i].once = false;
     }
 
-    internal void toggleDoubleButton(bool toggle)
-    {
-        doubleButton.interactable = toggle;
-    }
+    socketManager.OnGamble();
 
-    private void OnReset()
-    {
-        if (slotController) slotController.GambleCollect();
-        if (isAutoSpinOn)
-        {
-            isAutoSpinOn = false;
-            slotController.AutoSpin();
-        }
-        NormalCollectFunction();
-    }
+    yield return new WaitUntil(() => socketManager.isResultdone);
+    ComputeCards();
+    gambleStart = true;
+  }
 
-    void StartGamblegame(bool isRepeat = false)
+  internal Sprite GetCard()
+  {
+    if (socketManager.myMessage.playerWon)
     {
-        if (GambleEnd_Object) GambleEnd_Object.SetActive(false);
-        GambleTweeningAnim(false);
-        if (!isRepeat)
-        {
-            winamount.text = "0";
-            //isAutoSpinOn = true;
-            isAutoSpinOn = slotController.IsAutoSpin;
-        }
-        slotController.DeactivateGamble();
-        if (audioController) audioController.PlayButtonAudio();
-        if (gamble_game) gamble_game.SetActive(true);
-        loadingScreen.SetActive(true);
-        StartCoroutine(loadingRoutine());
-        StartCoroutine(GambleCoroutine());
+      if (DealerCard_Script) DealerCard_Script.cardImage = lowcard_Sprite;
+      return highcard_Sprite;
     }
-
-    internal void GambleTweeningAnim(bool IsStart)
+    else
     {
-        if (IsStart)
+      if (DealerCard_Script) DealerCard_Script.cardImage = highcard_Sprite;
+      return lowcard_Sprite;
+    }
+  }
+
+  internal void RunOnCollect()
+  {
+    StartCoroutine(NewCollectRoutine());
+  }
+
+  private IEnumerator NewCollectRoutine()
+  {
+    isResult = false;
+    socketManager.OnCollect();
+    yield return new WaitUntil(() => socketManager.isResultdone);
+    isResult = true;
+  }
+
+  internal void FlipAllCard()
+  {
+    int cardVal = 0;
+    for (int i = 0; i < allcards.Count; i++)
+    {
+      if (allcards[i].once)
+      {
+        continue;
+      }
+      else
+      {
+        allcards[i].Card_Button.interactable = false;
+        if (cardVal == 0)
         {
-            m_Temp_GambleButton = doubleButton.gameObject.transform.position;
-            Gamble_Tween_Scale = doubleButton.gameObject.GetComponent<RectTransform>().DOScale(new Vector2(1.18f, 1.18f), 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(0);
-            //Gamble_Tween_Move = doubleButton.gameObject.GetComponent<RectTransform>().DOMoveY(doubleButton.transform.position.y + .1f, 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(0);
+          allcards[i].cardImage = spare1card_Sprite;
+          cardVal++;
         }
         else
         {
-            Gamble_Tween_Scale.Kill();
-            //Gamble_Tween_Move.Kill();
-            doubleButton.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
+          allcards[i].cardImage = spare2card_Sprite;
         }
+        allcards[i].FlipMyObject();
+        allcards[i].Card_Button.interactable = false;
+      }
     }
-
-
-    private void ComputeCards()
+    if (DealerCard_Script) DealerCard_Script.FlipMyObject();
+    if (socketManager.myMessage.playerWon)
     {
-        highcard_Sprite = CardSet(socketManager.myMessage.highCard.suit, socketManager.myMessage.highCard.value);
-        lowcard_Sprite = CardSet(socketManager.myMessage.lowCard.suit, socketManager.myMessage.lowCard.value);
-        spare1card_Sprite = CardSet(socketManager.myMessage.exCards[0].suit, socketManager.myMessage.exCards[0].value);
-        spare2card_Sprite = CardSet(socketManager.myMessage.exCards[1].suit, socketManager.myMessage.exCards[1].value);
+      winamount.text = "YOU WIN" + "\n" + socketManager.myMessage.currentWining.ToString();
+      if (GambleEnd_Object) GambleEnd_Object.SetActive(true);
     }
-
-    private Sprite CardSet(string suit, string value)
+    else
     {
-        Sprite tempSprite = null;
-        if (suit.ToUpper() == "HEARTS")
-        {
-            if (value.ToUpper() == "A")
-            {
-                tempSprite = HeartSpriteList[0];
-            }
-            else if (value.ToUpper() == "K")
-            {
-                tempSprite = HeartSpriteList[12];
-            }
-            else if (value.ToUpper() == "Q")
-            {
-                tempSprite = HeartSpriteList[11];
-            }
-            else if (value.ToUpper() == "J")
-            {
-                tempSprite = HeartSpriteList[10];
-            }
-            else
-            {
-                int myval = int.Parse(value);
-                tempSprite = HeartSpriteList[myval - 1];
-            }
-        }
-        else if (suit.ToUpper() == "DIAMONDS")
-        {
-            if (value.ToUpper() == "A")
-            {
-                tempSprite = DiamondSpriteList[0];
-            }
-            else if (value.ToUpper() == "K")
-            {
-                tempSprite = DiamondSpriteList[12];
-            }
-            else if (value.ToUpper() == "Q")
-            {
-                tempSprite = DiamondSpriteList[11];
-            }
-            else if (value.ToUpper() == "J")
-            {
-                tempSprite = DiamondSpriteList[10];
-            }
-            else
-            {
-                int myval = int.Parse(value);
-                tempSprite = DiamondSpriteList[myval - 1];
-            }
-        }
-        else if (suit.ToUpper() == "CLUBS")
-        {
-            if (value.ToUpper() == "A")
-            {
-                tempSprite = ClubSpriteList[0];
-            }
-            else if (value.ToUpper() == "K")
-            {
-                tempSprite = ClubSpriteList[12];
-            }
-            else if (value.ToUpper() == "Q")
-            {
-                tempSprite = ClubSpriteList[11];
-            }
-            else if (value.ToUpper() == "J")
-            {
-                tempSprite = ClubSpriteList[10];
-            }
-            else
-            {
-                int myval = int.Parse(value);
-                tempSprite = ClubSpriteList[myval - 1];
-            }
-        }
-        else if (suit.ToUpper() == "SPADES")
-        {
-            if (value.ToUpper() == "A")
-            {
-                tempSprite = SpadeSpriteList[0];
-            }
-            else if (value.ToUpper() == "K")
-            {
-                tempSprite = SpadeSpriteList[12];
-            }
-            else if (value.ToUpper() == "Q")
-            {
-                tempSprite = SpadeSpriteList[11];
-            }
-            else if (value.ToUpper() == "J")
-            {
-                tempSprite = SpadeSpriteList[10];
-            }
-            else
-            {
-                int myval = int.Parse(value);
-                tempSprite = SpadeSpriteList[myval - 1];
-            }
-        }
-        else
-        {
-            Debug.LogError("Bad Value");
-        }
-        return tempSprite;
+      winamount.text = "YOU LOSE" + "\n" + "0";
+      StartCoroutine(Collectroutine());
     }
 
-    IEnumerator GambleCoroutine()
+  }
+
+
+  IEnumerator Collectroutine()
+  {
+    yield return new WaitForSeconds(2f);
+    gambleStart = false;
+    yield return new WaitForSeconds(2);
+    slotController.updateBalance();
+    if (gamble_game) gamble_game.SetActive(false);
+    allcards.ForEach((element) =>
     {
-        for (int i = 0; i < allcards.Count; i++)
-        {
-            allcards[i].once = false;
-        }
+      element.Card_Button.image.sprite = cardCover;
+      element.Reset();
 
-        socketManager.OnGamble();
-
-        yield return new WaitUntil(() => socketManager.isResultdone);
-        ComputeCards();
-        gambleStart = true;
-    }
-
-    internal Sprite GetCard()
+    });
+    DealerCard_Script.Card_Button.image.sprite = cardCover;
+    DealerCard_Script.once = false;
+    toggleDoubleButton(false);
+    if (isAutoSpinOn)
     {
-        if (socketManager.myMessage.playerWon)
-        {
-            if (DealerCard_Script) DealerCard_Script.cardImage = lowcard_Sprite;
-            return highcard_Sprite;
-        }
-        else
-        {
-            if (DealerCard_Script) DealerCard_Script.cardImage = highcard_Sprite;
-            return lowcard_Sprite;
-        }
+      slotController.AutoSpin();
     }
+  }
 
-    internal void RunOnCollect()
+  private void NormalCollectFunction()
+  {
+    gambleStart = false;
+    slotController.updateBalance();
+    if (gamble_game) gamble_game.SetActive(false);
+    allcards.ForEach((element) =>
     {
-        StartCoroutine(NewCollectRoutine());
-    }
+      element.Card_Button.image.sprite = cardCover;
+      element.Reset();
 
-    private IEnumerator NewCollectRoutine()
+    });
+    DealerCard_Script.Card_Button.image.sprite = cardCover;
+    DealerCard_Script.once = false;
+    toggleDoubleButton(false);
+  }
+
+  void OnGameOver()
+  {
+    StartCoroutine(Collectroutine());
+  }
+
+  IEnumerator loadingRoutine()
+  {
+    float fillAmount = 0;
+    while (fillAmount < 0.9)
     {
-        isResult = false;
-        socketManager.OnCollect();
-        yield return new WaitUntil(() => socketManager.isResultdone);
-        isResult = true;
+      fillAmount += Time.deltaTime;
+      slider.fillAmount = fillAmount;
+      if (fillAmount == 0.9) yield break;
+      yield return null;
     }
-
-    internal void FlipAllCard()
-    {
-        int cardVal = 0;
-        for (int i = 0; i < allcards.Count; i++)
-        {
-            if (allcards[i].once)
-            {
-                continue;
-            }
-            else
-            {
-                allcards[i].Card_Button.interactable = false;
-                if (cardVal == 0)
-                {
-                    allcards[i].cardImage = spare1card_Sprite;
-                    cardVal++;
-                }
-                else
-                {
-                    allcards[i].cardImage = spare2card_Sprite;
-                }
-                allcards[i].FlipMyObject();
-                allcards[i].Card_Button.interactable = false;
-            }
-        }
-        if (DealerCard_Script) DealerCard_Script.FlipMyObject();
-        if (socketManager.myMessage.playerWon)
-        {
-            winamount.text = "YOU WIN" + "\n" + socketManager.myMessage.currentWining.ToString();
-            if (GambleEnd_Object) GambleEnd_Object.SetActive(true);
-        }
-        else
-        {
-            winamount.text = "YOU LOSE" + "\n" + "0";
-            StartCoroutine(Collectroutine());
-        }
-
-    }
-
-
-    IEnumerator Collectroutine()
-    {
-        yield return new WaitForSeconds(2f);
-        gambleStart = false;
-        yield return new WaitForSeconds(2);
-        slotController.updateBalance();
-        if (gamble_game) gamble_game.SetActive(false);
-        allcards.ForEach((element) =>
-        {
-            element.Card_Button.image.sprite = cardCover;
-            element.Reset();
-
-        });
-        DealerCard_Script.Card_Button.image.sprite = cardCover;
-        DealerCard_Script.once = false;
-        toggleDoubleButton(false);
-        if (isAutoSpinOn)
-        {
-            slotController.AutoSpin();
-        }
-    }
-
-    private void NormalCollectFunction()
-    {
-        gambleStart = false;
-        slotController.updateBalance();
-        if (gamble_game) gamble_game.SetActive(false);
-        allcards.ForEach((element) =>
-        {
-            element.Card_Button.image.sprite = cardCover;
-            element.Reset();
-
-        });
-        DealerCard_Script.Card_Button.image.sprite = cardCover;
-        DealerCard_Script.once = false;
-        toggleDoubleButton(false);
-    }
-
-    void OnGameOver()
-    {
-        StartCoroutine(Collectroutine());
-    }
-
-    IEnumerator loadingRoutine()
-    {
-        float fillAmount = 0;
-        while (fillAmount < 0.9)
-        {
-            fillAmount += Time.deltaTime;
-            slider.fillAmount = fillAmount;
-            if (fillAmount == 0.9) yield break;
-            yield return null;
-        }
-        yield return new WaitUntil(() => gambleStart);
-        slider.fillAmount = 1;
-        yield return new WaitForSeconds(1f);
-        loadingScreen.SetActive(false);
-    }
+    yield return new WaitUntil(() => gambleStart);
+    slider.fillAmount = 1;
+    yield return new WaitForSeconds(1f);
+    loadingScreen.SetActive(false);
+  }
 }
