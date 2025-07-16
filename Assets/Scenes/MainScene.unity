@@ -256,8 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 7
   payoutManager: {fileID: 963807277}
 --- !u!1 &9259605
@@ -1302,8 +1300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 0
   payoutManager: {fileID: 963807277}
 --- !u!1 &66397149
@@ -2685,7 +2681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 207245768}
+  socketManager: {fileID: 500036492}
+  GemButton: {fileID: 0}
   imageAnimation: {fileID: 207245767}
   idleAnimation:
   - {fileID: 21300000, guid: f23cfeda73dae4c9ba96b27073e88f94, type: 3}
@@ -2727,9 +2724,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f55b7d65df76742e5be9a0b266404615, type: 3}
   - {fileID: 21300000, guid: 9cdf103ffa72245e38436d9f6735a275, type: 3}
   - {fileID: 21300000, guid: 26c175372cec846408a6dcc7a753616f, type: 3}
-  value: 0
+  index: 0
   bonusController: {fileID: 1923439557}
-  valueText: {fileID: 1822232374}
+  WinValueText: {fileID: 0}
 --- !u!1 &226574455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 230480227}
+  socketManager: {fileID: 500036492}
+  GemButton: {fileID: 0}
   imageAnimation: {fileID: 230480230}
   idleAnimation:
   - {fileID: 21300000, guid: d64139d937f4946f59b5be08d552fbd9, type: 3}
@@ -3003,9 +3001,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ab0d5dc9d5a9459783785ff8cfc5578, type: 3}
   - {fileID: 21300000, guid: 9ea9d7e5fb49a4155b154e4896185271, type: 3}
   - {fileID: 21300000, guid: 0e3f3546a19344075ae5e4f5a125f4f1, type: 3}
-  value: 0
+  index: 1
   bonusController: {fileID: 1923439557}
-  valueText: {fileID: 741889680}
+  WinValueText: {fileID: 0}
 --- !u!1 &230730083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,8 +3346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 4
   payoutManager: {fileID: 963807277}
 --- !u!1 &255096510
@@ -4509,25 +4505,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f2c8ee610c34558839b64290afe0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Home_button: {fileID: 672233073}
   Menu_Button: {fileID: 1793761132}
   Menu_Object: {fileID: 1793761130}
-  Menu_RT: {fileID: 1793761131}
   Settings_Button: {fileID: 836189147}
   Settings_Object: {fileID: 836189145}
   Settings_RT: {fileID: 836189146}
   Exit_Button: {fileID: 1298846852}
   Exit_Object: {fileID: 1298846850}
-  Exit_RT: {fileID: 1298846851}
   Paytable_Button: {fileID: 796307138}
   Paytable_Object: {fileID: 796307136}
   Paytable_RT: {fileID: 796307137}
   GameExit_Button: {fileID: 672233073}
   SkipWinAnimation: {fileID: 927980918}
   MainPopup_Object: {fileID: 1643718612}
-  AboutPopup_Object: {fileID: 1334341302}
-  AboutExit_Button: {fileID: 1501538279}
-  Info_button: {fileID: 796307138}
   PaytablePopup_Object: {fileID: 1023456358}
   PaytableExit_Button: {fileID: 990849630}
   SymbolsText:
@@ -4558,10 +4548,6 @@ MonoBehaviour:
   HugeWin_Sprite: {fileID: 21300000, guid: 6fa9371de297a42df8dd1c9b34ade9a8, type: 3}
   BigWin_Sprite: {fileID: 21300000, guid: f44bd1bf12e27432ca513ac9d2601fc1, type: 3}
   MegaWin_Sprite: {fileID: 21300000, guid: 610d3bacfee6d4507a08febac148d3c2, type: 3}
-  Loading_Object: {fileID: 672254529}
-  Loading_Image: {fileID: 1552133320}
-  LoadPercent_Text: {fileID: 813821284}
-  Loading_Text: {fileID: 364370324}
   LBExit_Button: {fileID: 1766276445}
   LBPopup_Object: {fileID: 1782529908}
   CloseDisconnect_Button: {fileID: 1569823678}
@@ -4887,7 +4873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 395550248}
+  socketManager: {fileID: 500036492}
+  GemButton: {fileID: 0}
   imageAnimation: {fileID: 395550247}
   idleAnimation:
   - {fileID: 21300000, guid: f68967848775e41e492a7d2e3464502e, type: 3}
@@ -4929,9 +4916,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f28d711a6436444fba9ad6baf5ae7366, type: 3}
   - {fileID: 21300000, guid: 66ba75901379f4f65984bb5a7c01739f, type: 3}
   - {fileID: 21300000, guid: 957f81eac70eb454988159a78e4aa042, type: 3}
-  value: 0
+  index: 3
   bonusController: {fileID: 1923439557}
-  valueText: {fileID: 1060568858}
+  WinValueText: {fileID: 0}
 --- !u!1 &421806438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,9 +5561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotManager: {fileID: 2046803210}
   uiManager: {fileID: 377874625}
-  bonusdata: []
-  _jsManager: {fileID: 500036493}
-  testToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVkZDMzMzUzOTI1MjFmZWJmYjZiYSIsInVzZXJuYW1lIjoiTWVldCIsInJvbGUiOiJwbGF5ZXIiLCJpYXQiOjE3NDMxNTM3OTAsImV4cCI6MTc0Mzc1ODU5MH0.mPrsE-s7S3KiQyWukXn981HjHgIKv8A1vX_hunaw6hA
+  gambleController: {fileID: 2118856088}
+  bonusController: {fileID: 1923439557}
+  testToken: 2eb8d2f7daa34d1982232a9cef226ff2
   JSManager: {fileID: 99197459}
 --- !u!114 &500036493
 MonoBehaviour:
@@ -6910,7 +6897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 579565099}
+  socketManager: {fileID: 500036492}
+  GemButton: {fileID: 0}
   imageAnimation: {fileID: 579565102}
   idleAnimation:
   - {fileID: 21300000, guid: b04efdcd907d84452a596cf9603cad67, type: 3}
@@ -6952,9 +6940,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 603d0b5db583a4ecd8767bba4c021a02, type: 3}
   - {fileID: 21300000, guid: 5216296f93c7e431fa73b5507dee5ef7, type: 3}
   - {fileID: 21300000, guid: f969651eb6a1c4d89883905510edae9f, type: 3}
-  value: 0
+  index: 4
   bonusController: {fileID: 1923439557}
-  valueText: {fileID: 99790531}
+  WinValueText: {fileID: 0}
 --- !u!1 &602423015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7141,7 +7129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643549637}
   m_Layer: 5
-  m_Name: EndObject
+  m_Name: GambleButtonsParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7301,8 +7289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 0
   payoutManager: {fileID: 963807277}
 --- !u!1 &662805893
@@ -11054,12 +11040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c2d218303904f8b89a581d384e3778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_Distance: 175
-  y_Distance: 170
-  LineContainer: {fileID: 21776335}
-  Line_Prefab: {fileID: 1141521666132180400, guid: 95e0640a1aceb43ce952186ee810e809, type: 3}
-  InitialLinePosition: {x: -350, y: 170}
-  LineList: 0100000003000000050000000700000009000000
   LineObjetcs:
   - {fileID: 127394313}
   - {fileID: 1128610400}
@@ -12006,140 +11986,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033195839}
   m_CullTransparentMesh: 1
---- !u!1 &1048115583
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1048115584}
-  - component: {fileID: 1048115586}
-  - component: {fileID: 1048115585}
-  m_Layer: 5
-  m_Name: Linebet_Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1048115584
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048115583}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1337861299}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 46.51, y: 50.34}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1048115585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048115583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 33.48
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 33.48
-  m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 2
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1048115586
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048115583}
-  m_CullTransparentMesh: 1
 --- !u!1 &1060568856
 GameObject:
   m_ObjectHideFlags: 0
@@ -12407,8 +12253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 8
   payoutManager: {fileID: 963807277}
 --- !u!1 &1068368105
@@ -12678,8 +12522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 3
   payoutManager: {fileID: 963807277}
 --- !u!1 &1101324578
@@ -14022,8 +13864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 6
   payoutManager: {fileID: 963807277}
 --- !u!1 &1237956801
@@ -15464,83 +15304,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1337861298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1337861299}
-  - component: {fileID: 1337861301}
-  - component: {fileID: 1337861300}
-  m_Layer: 5
-  m_Name: BetPerline
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1337861299
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337861298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1549409440}
-  - {fileID: 1048115584}
-  m_Father: {fileID: 1480051154}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -836, y: 201}
-  m_SizeDelta: {x: 94, y: 94}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1337861300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337861298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20da99819be794f4e8d11e233339eb53, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1337861301
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337861298}
-  m_CullTransparentMesh: 1
 --- !u!1 &1367025854
 GameObject:
   m_ObjectHideFlags: 0
@@ -16650,7 +16413,6 @@ RectTransform:
   - {fileID: 82827803}
   - {fileID: 199028461}
   - {fileID: 790617408}
-  - {fileID: 1337861299}
   - {fileID: 764284921}
   - {fileID: 1533432922}
   - {fileID: 742687160}
@@ -17916,140 +17678,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542813824}
   m_CullTransparentMesh: 1
---- !u!1 &1549409439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1549409440}
-  - component: {fileID: 1549409442}
-  - component: {fileID: 1549409441}
-  m_Layer: 5
-  m_Name: LineBet_Title
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1549409440
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549409439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1337861299}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 109}
-  m_SizeDelta: {x: 94, y: 121.65}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1549409441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549409439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Bet Per Line
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4291428095
-  m_fontColor: {r: 1, g: 0.99607843, b: 0.7882353, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 29.43
-  m_fontSizeBase: 29.43
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 34.03
-  m_fontStyle: 17
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1549409442
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549409439}
-  m_CullTransparentMesh: 1
 --- !u!1 &1549583366
 GameObject:
   m_ObjectHideFlags: 0
@@ -18408,8 +18036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 1
   payoutManager: {fileID: 963807277}
 --- !u!1 &1569823676
@@ -19068,8 +18694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 5
   payoutManager: {fileID: 963807277}
 --- !u!1 &1616370230
@@ -19249,7 +18873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gem: {fileID: 1616370232}
+  socketManager: {fileID: 500036492}
+  GemButton: {fileID: 0}
   imageAnimation: {fileID: 1616370235}
   idleAnimation:
   - {fileID: 21300000, guid: 28d1326295ead4d0cbb6410362a9f52a, type: 3}
@@ -19291,9 +18916,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 03d3f16152a31477aad6799314e78fb8, type: 3}
   - {fileID: 21300000, guid: f042233f537044ed8a2a56621510a56c, type: 3}
   - {fileID: 21300000, guid: 1731cc641782b4190870bd763874fa63, type: 3}
-  value: 0
+  index: 2
   bonusController: {fileID: 1923439557}
-  valueText: {fileID: 1682361948}
+  WinValueText: {fileID: 0}
 --- !u!1 &1643718612
 GameObject:
   m_ObjectHideFlags: 0
@@ -21749,8 +21374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 4
   payoutManager: {fileID: 963807277}
 --- !u!1 &1806081573
@@ -21886,8 +21509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 6
   payoutManager: {fileID: 963807277}
 --- !u!1 &1813791459
@@ -22023,8 +21644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 2
   payoutManager: {fileID: 963807277}
 --- !u!1 &1814462059
@@ -22207,7 +21826,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7426b609eb2ba4a0ba7a6ec787165a1e, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 4488374881921247725, guid: 7426b609eb2ba4a0ba7a6ec787165a1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22270,7 +21889,7 @@ MonoBehaviour:
   m_margin: {x: -0.7983322, y: 0, z: 0.22463991, w: -0.99492836}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1822232375
@@ -22736,8 +22355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 8
   payoutManager: {fileID: 963807277}
 --- !u!1 &1905364930
@@ -22873,8 +22490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 2
   payoutManager: {fileID: 963807277}
 --- !u!1 &1917131126
@@ -23010,9 +22625,6 @@ MonoBehaviour:
   raycastPanel: {fileID: 257213505}
   _audioManager: {fileID: 7113384613047857503}
   m_Score: {fileID: 9259607}
-  gemValues: 
-  currentBreakCount: 0
-  maxBreakCount: 0
 --- !u!1 &1929622852
 GameObject:
   m_ObjectHideFlags: 0
@@ -23663,8 +23275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 3
   payoutManager: {fileID: 963807277}
 --- !u!1 &1956211676
@@ -24788,7 +24398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5425de25e7b479e921e2bb06840bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainContainer_RT: {fileID: 1574897783}
   myImages:
   - {fileID: 21300000, guid: b2536968bd892444b844223cabfca047, type: 3}
   - {fileID: 21300000, guid: a93f74bbe5bdb419abfc3ea3cc7ed98f, type: 3}
@@ -24872,12 +24481,6 @@ MonoBehaviour:
     - {fileID: 7833985048286620499}
     - {fileID: 7833985047884295715}
     - {fileID: 7833985048648590016}
-  Slot_Objects:
-  - {fileID: 1814462059}
-  - {fileID: 345215053}
-  - {fileID: 1173368040}
-  - {fileID: 1917131126}
-  - {fileID: 724812879}
   Slot_Elements:
   - {fileID: 0}
   - {fileID: 0}
@@ -24891,30 +24494,21 @@ MonoBehaviour:
   - {fileID: 1917131127}
   - {fileID: 724812883}
   SlotStart_Button: {fileID: 567733206}
-  StaticLine_Objects: []
   Balance_text: {fileID: 723147577}
   TotalBet_text: {fileID: 1068368107}
-  LineBet_text: {fileID: 1048115585}
   TotalWin_text: {fileID: 1318289039}
-  Your_Win_GameObject: {fileID: 764284920}
   AutoSpin_Button: {fileID: 271841706}
   AutoSpinStop_Button: {fileID: 461473799}
-  AutoSpinHover_Sprite: {fileID: 21300000, guid: f3151f592f1e340058587be106717b6e, type: 3}
-  AutoSpin_Sprite: {fileID: 21300000, guid: 6ada675f21bb94b8798ee8825c1d01d5, type: 3}
-  AutoSpin_Image: {fileID: 271841707}
   MaxBet_Button: {fileID: 1237956803}
   Betone_button: {fileID: 690808446}
-  Double_button: {fileID: 1533432923}
   Turbo_Button: {fileID: 742687161}
   StopSpin_Button: {fileID: 82827804}
   TurboToggleSprites:
   - {fileID: 21300000, guid: 33cbab05b310447f49b2255978a859a2, type: 3}
-  Image_Prefab: {fileID: 595047196131445314, guid: 04c659a2f5ec249f5be006eb52752781, type: 3}
   PayCalculator: {fileID: 963807277}
-  TempList: []
+  WinLineSymbolList: []
   IconSizeFactor: 195
   SpaceFactor: 5
-  verticalVisibility: 3
   SocketManager: {fileID: 500036492}
   audioController: {fileID: 7113384613047857503}
   uiManager: {fileID: 377874625}
@@ -25099,8 +24693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 5
   payoutManager: {fileID: 963807277}
 --- !u!1 &2083325436
@@ -25236,8 +24828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 1
   payoutManager: {fileID: 963807277}
 --- !u!1 &2088344539
@@ -25507,8 +25097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e47b6da1ed4d549cdfd57e72a8200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotManager: {fileID: 2046803210}
-  num_text: {fileID: 0}
   num: 7
   payoutManager: {fileID: 963807277}
 --- !u!1 &2099764599
@@ -25992,15 +25580,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120d16b8ea7b4136b4f76b1cac17e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamble_game: {fileID: 1835524851}
-  doubleButton: {fileID: 1533432923}
+  GambleParentUI: {fileID: 1835524851}
+  GambleStartButton: {fileID: 1533432923}
   socketManager: {fileID: 500036492}
   audioController: {fileID: 7113384613047857503}
   allcards:
   - {fileID: 1113455523}
   - {fileID: 1852183781}
   - {fileID: 66397154}
-  winamount: {fileID: 1489397743}
+  GambleWinText: {fileID: 1489397743}
   slotController: {fileID: 2046803210}
   HeartSpriteList:
   - {fileID: 21300000, guid: b675c9dd40a324b0d89080f8d6dd66f5, type: 3}
@@ -26060,12 +25648,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97b16c2be24f74ec483a7a4c62f2bef8, type: 3}
   cardCover: {fileID: 21300000, guid: e2db62992d7c94280843abd1d3172253, type: 3}
   DealerCard_Script: {fileID: 662805899}
-  loadingScreen: {fileID: 1319254408}
-  GambleEnd_Object: {fileID: 643549636}
-  DoubleEnd_Button: {fileID: 1505404394}
-  CollectEnd_Button: {fileID: 113292756}
+  LoadingScreenUI: {fileID: 1319254408}
+  GambleButtonsParent: {fileID: 643549636}
+  GambleDoubleButton: {fileID: 1505404394}
+  GambleCollectButton: {fileID: 113292756}
   slider: {fileID: 337400242}
-  isAutoSpinOn: 0
+  WasAutoSpinOnBeforeGamble: 0
 --- !u!1 &2120640909
 GameObject:
   m_ObjectHideFlags: 0
@@ -30895,12 +30483,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240543433532}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897238922435421
@@ -30966,12 +30555,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240562882177}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897238973810190
@@ -31037,12 +30627,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240513596370}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897238987244110
@@ -31108,12 +30699,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240526638994}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897238988217723
@@ -31179,12 +30771,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240493985959}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239047156848
@@ -31250,12 +30843,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240721291692}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239097146679
@@ -31321,12 +30915,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240603439339}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239161185858
@@ -31392,12 +30987,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240801242014}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239180524809
@@ -31463,12 +31059,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240854524117}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239237891346
@@ -31534,12 +31131,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240743663822}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239242337722
@@ -31605,12 +31203,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240782250086}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239262433383
@@ -31676,12 +31275,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240768142779}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239267566449
@@ -31747,12 +31347,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240773799597}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239348958393
@@ -31818,12 +31419,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240888220005}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239383921199
@@ -31889,12 +31491,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240923774963}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239396437467
@@ -31960,12 +31563,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240902860807}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239441058787
@@ -32031,12 +31635,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240041383487}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239457633845
@@ -32102,12 +31707,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240024538089}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239514339567
@@ -32173,12 +31779,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437239980447027}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239541408891
@@ -32244,12 +31851,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240141343143}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239557081231
@@ -32315,12 +31923,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240156816723}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239569312067
@@ -32386,12 +31995,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240136213663}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239590792174
@@ -32457,12 +32067,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240190527026}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239623649310
@@ -32528,12 +32139,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240089232834}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239628542629
@@ -32599,12 +32211,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240060510073}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239629029196
@@ -32670,12 +32283,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240061055632}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239652824290
@@ -32741,12 +32355,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240119064894}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239718650945
@@ -32812,12 +32427,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240318519709}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897239918698788
@@ -32883,12 +32499,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437240384810232}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240087073308
@@ -32954,12 +32571,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241760686016}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240157586625
@@ -33025,12 +32643,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241697503517}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240184455464
@@ -33096,12 +32715,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241724374260}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240256175752
@@ -33167,12 +32787,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241930306388}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240267133443
@@ -33238,12 +32859,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241907781599}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240336291610
@@ -33309,12 +32931,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241842064070}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240421592534
@@ -33380,12 +33003,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241960980490}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240429619165
@@ -33451,12 +33075,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241968945665}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240527398134
@@ -33522,12 +33147,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241127725354}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240542289110
@@ -33593,12 +33219,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241108599050}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240614757974
@@ -33664,12 +33291,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241215216522}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240670115699
@@ -33735,12 +33363,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241236363951}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240840785179
@@ -33806,12 +33435,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241273336007}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240860800589
@@ -33877,12 +33507,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241326975889}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240917141347
@@ -33948,12 +33579,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241517075135}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!114 &2703897240968955857
@@ -34019,12 +33651,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7526134e396d447ac815e1133aed2279, type: 3}
   - {fileID: 21300000, guid: 72f5cf271722d43768d109050bea2b74, type: 3}
   - {fileID: 21300000, guid: ba46e9de42c504c5aa8a6e7ab2071031, type: 3}
+  - {fileID: 21300000, guid: 01a15e7fb202b4abb9031bfec8a22d64, type: 3}
   rendererDelegate: {fileID: 7895437241400986125}
   useSharedMaterial: 1
   doLoopAnimation: 1
   currentAnimationState: 0
   AnimationSpeed: 40
-  delayBetweenLoop: 0
+  delayBetweenLoop: 2
   StartOnAwake: 1
   DestroyOnCompletion: 0
 --- !u!1 &3444136644397884577

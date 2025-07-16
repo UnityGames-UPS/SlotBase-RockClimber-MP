@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PayoutCalculation : MonoBehaviour
 {
-  [SerializeField] internal List<int> LineList;
   [SerializeField] private List<GameObject> LineObjetcs;
   [SerializeField] internal List<int> DontDestroyLines = new List<int>();
 
@@ -17,7 +16,6 @@ public class PayoutCalculation : MonoBehaviour
     if (index >= 0)
     {
       LineObjetcs[index].SetActive(true);
-      print("line object name" + LineObjetcs[index].name);
       return;
     }
     DontDestroyLines.Clear();

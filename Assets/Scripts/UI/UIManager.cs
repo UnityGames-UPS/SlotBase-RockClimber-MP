@@ -162,7 +162,7 @@ public class UIManager : MonoBehaviour
     if (YesQuit_Button) YesQuit_Button.onClick.AddListener(CallOnExitFunction);
 
     if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
-    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); socketManager.ReactNativeCallOnFailedToConnect(); }); //BackendChanges
+    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction();}); //BackendChanges
 
     if (CloseAD_Button) CloseAD_Button.onClick.RemoveAllListeners();
     if (CloseAD_Button) CloseAD_Button.onClick.AddListener(CallOnExitFunction);
@@ -214,42 +214,42 @@ public class UIManager : MonoBehaviour
     }
   }
 
-  internal void InitialiseUIData(string SupportUrl, string AbtImgUrl, string TermsUrl, string PrivacyUrl, Paylines symbolsText)
+  internal void InitialiseUIData(Paylines symbolsText)
   {
     PopulateSymbolsPayout(symbolsText);
   }
 
   private void PopulateSymbolsPayout(Paylines paylines)
   {
-    for (int i = 0; i < SymbolsText.Length; i++)
-    {
-      string text = null;
-      if (paylines.symbols[i].Multiplier[0][0] != 0)
-      {
-        text += "5x - " + paylines.symbols[i].Multiplier[0][0] + "x";
-      }
-      if (paylines.symbols[i].Multiplier[1][0] != 0)
-      {
-        text += "\n4x - " + paylines.symbols[i].Multiplier[1][0] + "x";
-      }
-      if (paylines.symbols[i].Multiplier[2][0] != 0)
-      {
-        text += "\n3x - " + paylines.symbols[i].Multiplier[2][0] + "x";
-      }
-      if (SymbolsText[i]) SymbolsText[i].text = text;
-    }
-    for (int i = 0; i < paylines.symbols.Count; i++)
-    {
-      if (paylines.symbols[i].Name.ToUpper() == "BONUS")
-      {
-        if (m_Bonus_Text) m_Bonus_Text.text = paylines.symbols[i].description.ToString();
-      }
-      if (paylines.symbols[i].Name.ToUpper() == "WILD")
-      {
-        if (wildText) wildText.text = paylines.symbols[i].description.ToString();
-      }
+    // for (int i = 0; i < SymbolsText.Length; i++)
+    // {
+    //   string text = null;
+    //   if (paylines.symbols[i].Multiplier[0][0] != 0)
+    //   {
+    //     text += "5x - " + paylines.symbols[i].Multiplier[0][0] + "x";
+    //   }
+    //   if (paylines.symbols[i].Multiplier[1][0] != 0)
+    //   {
+    //     text += "\n4x - " + paylines.symbols[i].Multiplier[1][0] + "x";
+    //   }
+    //   if (paylines.symbols[i].Multiplier[2][0] != 0)
+    //   {
+    //     text += "\n3x - " + paylines.symbols[i].Multiplier[2][0] + "x";
+    //   }
+    //   if (SymbolsText[i]) SymbolsText[i].text = text;
+    // }
+    // for (int i = 0; i < paylines.symbols.Count; i++)
+    // {
+    //   if (paylines.symbols[i].Name.ToUpper() == "BONUS")
+    //   {
+    //     if (m_Bonus_Text) m_Bonus_Text.text = paylines.symbols[i].description.ToString();
+    //   }
+    //   if (paylines.symbols[i].Name.ToUpper() == "WILD")
+    //   {
+    //     if (wildText) wildText.text = paylines.symbols[i].description.ToString();
+    //   }
 
-    }
+    // }
   }
 
   private void CallOnExitFunction()

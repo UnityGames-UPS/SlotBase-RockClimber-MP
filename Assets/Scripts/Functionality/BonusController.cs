@@ -1,52 +1,50 @@
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class BonusController : MonoBehaviour
 {
   [SerializeField] private GameObject bonus_game;
-  [SerializeField] private SlotBehaviour slotManager;
+  [SerializeField] internal SlotBehaviour slotManager;
   [SerializeField] internal GameObject raycastPanel;
   [SerializeField] private AudioController _audioManager;
   [SerializeField] private TMP_Text m_Score;
-  [SerializeField] private List<int> gemValues;
-  [SerializeField] internal int currentBreakCount = 0;
-  [SerializeField] internal int maxBreakCount = 0;
   private double TotalBonusWin = 0;
+  internal bool isOpening;
+  internal bool isFinished;
+  internal bool WaitForBonusResult = false;
 
-  internal double OnBreakGem()
+  internal void StartBonus()
   {
-    currentBreakCount++;
-    double m_value = gemValues[currentBreakCount - 1] * slotManager.currentBet;
-    TotalBonusWin += m_value;
-    Debug.Log(string.Concat("<color=cyan><b>", slotManager.currentBet, m_value, "</b></color>"));
+    _audioManager.SwitchBGSound(true);
+
+    TotalBonusWin = 0;
     m_Score.text = TotalBonusWin.ToString();
-    return m_value;
+    isOpening = false;
+    isFinished = false;
+    WaitForBonusResult = false;
+
+    if (bonus_game) bonus_game.SetActive(true);
+  }
+  
+  internal void UpdateTotalWin(double value)
+  {
+    TotalBonusWin += value;
+    m_Score.text = TotalBonusWin.ToString();
   }
 
   internal void GameOver()
   {
-    currentBreakCount = 0;
-    maxBreakCount = 0;
+    isFinished = true;
     Invoke("OnGameOver", 1.5f);
   }
 
   void OnGameOver()
   {
-    slotManager.CheckPopups = false;
     _audioManager.SwitchBGSound(false);
     if (bonus_game) bonus_game.SetActive(false);
+    slotManager.WaitForBonus = false;
   }
 
-  internal void StartBonus(List<int> values)
-  {
-
-    gemValues.Clear();
-    gemValues.TrimExcess();
-    gemValues = values;
-    _audioManager.SwitchBGSound(true);
-    if (bonus_game) bonus_game.SetActive(true);
-  }
 
   internal void PlayWinSound()
   {
