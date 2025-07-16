@@ -28,7 +28,9 @@ public class CardFlip : MonoBehaviour
     }
     gambleController.Flipped = true;
 
+    Tween tween = transform.DOShakePosition(1f, new Vector3(15, 0, 0), 30, 90, true).SetLoops(-1, LoopType.Incremental);
     yield return gambleController.GambleDraw();
+    tween.Kill();
     gambleController.CardFlipped(this);
     FlipMyCard(gambleController.PlayerCardSprite);
     yield return new WaitForSecondsRealtime(1f);
