@@ -3,10 +3,9 @@ using TMPro;
 
 public class BonusController : MonoBehaviour
 {
-  [SerializeField] private GameObject bonus_game;
   [SerializeField] internal SlotBehaviour slotManager;
-  [SerializeField] internal GameObject raycastPanel;
   [SerializeField] private AudioController _audioManager;
+  [SerializeField] private GameObject bonus_game;
   [SerializeField] private TMP_Text m_Score;
   private double TotalBonusWin = 0;
   internal bool isOpening;
@@ -44,7 +43,6 @@ public class BonusController : MonoBehaviour
     if (bonus_game) bonus_game.SetActive(false);
     slotManager.WaitForBonus = false;
   }
-
 
   internal void PlayWinSound()
   {

@@ -338,7 +338,7 @@ public class SocketIOManager : MonoBehaviour
     message.payload.Event = "init";
 
     string json = JsonUtility.ToJson(message);
-    Debug.Log("OnGambleInit Data Sent: " + json);
+    // Debug.Log("OnGambleInit Data Sent: " + json);
     SendDataWithNamespace("request", json);
   }
 
@@ -350,7 +350,7 @@ public class SocketIOManager : MonoBehaviour
     message.payload.Event = "collect";
 
     string json = JsonUtility.ToJson(message);
-    Debug.Log("OnGambleCollect Data Sent: " + json);
+    // Debug.Log("OnGambleCollect Data Sent: " + json);
     SendDataWithNamespace("request", json);
   }
 
@@ -362,7 +362,7 @@ public class SocketIOManager : MonoBehaviour
     message.payload.Event = "draw";
 
     string json = JsonUtility.ToJson(message);
-    Debug.Log("OnGambleDraw Data Sent: " + json);
+    // Debug.Log("OnGambleDraw Data Sent: " + json);
     SendDataWithNamespace("request", json);
   }
 
@@ -377,7 +377,7 @@ public class SocketIOManager : MonoBehaviour
     message.payload.Event = "tap";
 
     string json = JsonUtility.ToJson(message);
-    Debug.Log("OnBonusCollect Data Sent: " + json);
+    // Debug.Log("OnBonusCollect Data Sent: " + json);
     SendDataWithNamespace("request", json);
   }
 

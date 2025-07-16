@@ -28,7 +28,7 @@ public class CardFlip : MonoBehaviour
     }
     gambleController.Flipped = true;
 
-    // yield return gambleController.GambleDraw();
+    yield return gambleController.GambleDraw();
     gambleController.CardFlipped(this);
     FlipMyCard(gambleController.PlayerCardSprite);
     yield return new WaitForSecondsRealtime(1f);

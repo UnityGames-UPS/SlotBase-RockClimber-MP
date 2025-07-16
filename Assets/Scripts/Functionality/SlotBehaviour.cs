@@ -18,7 +18,7 @@ public class SlotBehaviour : MonoBehaviour
 
   [Header("Slot Images")]
   [SerializeField] private List<SlotImage> images;
-  [SerializeField]  private List<SlotImage> Tempimages;
+  [SerializeField] private List<SlotImage> Tempimages;
 
   [Header("Slots Elements")]
   [SerializeField] private LayoutElement[] Slot_Elements;
@@ -386,7 +386,7 @@ public class SlotBehaviour : MonoBehaviour
     {
       yield return new WaitForSeconds(1f);
       WaitForBonus = true;
-      TriggerBonusGame();
+      bonusController.StartBonus();
       yield return new WaitUntil(() => !WaitForBonus);
     }
 
@@ -420,11 +420,6 @@ public class SlotBehaviour : MonoBehaviour
     }
   }
 
-  internal void GambleCollect()
-  {
-    SocketManager.OnGambleCollect();
-  }
-
   internal void CheckAndTriggerWinPopups()
   {
     if (SocketManager.resultData.payload.winAmount >= currentTotalBet * 5 && SocketManager.resultData.payload.winAmount < currentTotalBet * 10)
@@ -445,11 +440,6 @@ public class SlotBehaviour : MonoBehaviour
     }
   }
 
-  internal void TriggerBonusGame()
-  {
-    bonusController.StartBonus();
-  }
-
   void ToggleButtonGrp(bool toggle)
   {
     if (SlotStart_Button) SlotStart_Button.interactable = toggle;
@@ -467,7 +457,7 @@ public class SlotBehaviour : MonoBehaviour
     TextAnimation(TotalWin_text, currentTotalWin, SocketManager.resultData.payload.winAmount, 0.5f);
   }
 
-  private void ToggleWinLineSymbolsONn(GameObject animObjects)
+  private void ToggleWinLineSymbolsON(GameObject animObjects)
   {
     animObjects.transform.GetChild(0).gameObject.SetActive(true);
     animObjects.transform.GetChild(1).gameObject.SetActive(true);
@@ -486,8 +476,8 @@ public class SlotBehaviour : MonoBehaviour
         WinLineSymbolList[i].transform.parent.GetChild(0).gameObject.SetActive(false);
         WinLineSymbolList[i].transform.parent.GetChild(1).gameObject.SetActive(false);
       }
-      }
-      WinLineSymbolList.Clear();
+    }
+    WinLineSymbolList.Clear();
     WinLineSymbolList.TrimExcess();
   }
 
@@ -519,7 +509,7 @@ public class SlotBehaviour : MonoBehaviour
       int rowIndex = coord.Key;
       int columnIndex = coord.Value;
       // Debug.Log($"Win Line: Column {columnIndex}, Row {rowIndex}");
-      ToggleWinLineSymbolsONn(Tempimages[columnIndex].slotImages[rowIndex].gameObject);
+      ToggleWinLineSymbolsON(Tempimages[columnIndex].slotImages[rowIndex].gameObject);
     }
   }
 
@@ -561,7 +551,7 @@ public class SlotBehaviour : MonoBehaviour
 
   Tween TextAnimation(TMP_Text text, double startValue, double endValue, double duration)
   {
-    Debug.Log($"Text Animation: Start Value: {startValue}, End Value: {endValue}, Duration: {duration}");
+    // Debug.Log($"Text Animation: Start Value: {startValue}, End Value: {endValue}, Duration: {duration}");
     return DOTween.To(() => startValue, (x) => startValue = x, endValue, (float)duration).OnUpdate(() =>
     {
       if (text)

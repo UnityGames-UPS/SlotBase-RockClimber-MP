@@ -2681,9 +2681,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   socketManager: {fileID: 500036492}
-  GemButton: {fileID: 0}
+  bonusController: {fileID: 1923439557}
   imageAnimation: {fileID: 207245767}
+  WinValueText: {fileID: 0}
+  GemButton: {fileID: 0}
   idleAnimation:
   - {fileID: 21300000, guid: f23cfeda73dae4c9ba96b27073e88f94, type: 3}
   - {fileID: 21300000, guid: cd3fb26584cb84756b19fdd37b7dca7f, type: 3}
@@ -2724,9 +2727,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f55b7d65df76742e5be9a0b266404615, type: 3}
   - {fileID: 21300000, guid: 9cdf103ffa72245e38436d9f6735a275, type: 3}
   - {fileID: 21300000, guid: 26c175372cec846408a6dcc7a753616f, type: 3}
-  index: 0
-  bonusController: {fileID: 1923439557}
-  WinValueText: {fileID: 0}
 --- !u!1 &226574455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,9 +2958,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 1
   socketManager: {fileID: 500036492}
-  GemButton: {fileID: 0}
+  bonusController: {fileID: 1923439557}
   imageAnimation: {fileID: 230480230}
+  WinValueText: {fileID: 0}
+  GemButton: {fileID: 0}
   idleAnimation:
   - {fileID: 21300000, guid: d64139d937f4946f59b5be08d552fbd9, type: 3}
   - {fileID: 21300000, guid: 3eec32f4a2efe46d79b0640a20f18a6a, type: 3}
@@ -3001,9 +3004,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ab0d5dc9d5a9459783785ff8cfc5578, type: 3}
   - {fileID: 21300000, guid: 9ea9d7e5fb49a4155b154e4896185271, type: 3}
   - {fileID: 21300000, guid: 0e3f3546a19344075ae5e4f5a125f4f1, type: 3}
-  index: 1
-  bonusController: {fileID: 1923439557}
-  WinValueText: {fileID: 0}
 --- !u!1 &230730083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,81 +3479,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255096510}
-  m_CullTransparentMesh: 1
---- !u!1 &257213505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 257213506}
-  - component: {fileID: 257213508}
-  - component: {fileID: 257213507}
-  m_Layer: 5
-  m_Name: inputblocker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &257213506
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257213505}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 929982824}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &257213507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257213505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &257213508
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257213505}
   m_CullTransparentMesh: 1
 --- !u!1 &260702030
 GameObject:
@@ -4560,8 +4485,6 @@ MonoBehaviour:
   CrossQuit_Button: {fileID: 255096512}
   audioController: {fileID: 7113384613047857503}
   slotBehaviour: {fileID: 2046803210}
-  socketManager: {fileID: 500036492}
-  m_AwakeGameButton: {fileID: 1327315226}
 --- !u!1 &379831301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,9 +4796,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 3
   socketManager: {fileID: 500036492}
-  GemButton: {fileID: 0}
+  bonusController: {fileID: 1923439557}
   imageAnimation: {fileID: 395550247}
+  WinValueText: {fileID: 0}
+  GemButton: {fileID: 0}
   idleAnimation:
   - {fileID: 21300000, guid: f68967848775e41e492a7d2e3464502e, type: 3}
   - {fileID: 21300000, guid: 5db40144625a440e0bbd06501f021fbc, type: 3}
@@ -4916,9 +4842,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f28d711a6436444fba9ad6baf5ae7366, type: 3}
   - {fileID: 21300000, guid: 66ba75901379f4f65984bb5a7c01739f, type: 3}
   - {fileID: 21300000, guid: 957f81eac70eb454988159a78e4aa042, type: 3}
-  index: 3
-  bonusController: {fileID: 1923439557}
-  WinValueText: {fileID: 0}
 --- !u!1 &421806438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6897,9 +6820,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 4
   socketManager: {fileID: 500036492}
-  GemButton: {fileID: 0}
+  bonusController: {fileID: 1923439557}
   imageAnimation: {fileID: 579565102}
+  WinValueText: {fileID: 0}
+  GemButton: {fileID: 0}
   idleAnimation:
   - {fileID: 21300000, guid: b04efdcd907d84452a596cf9603cad67, type: 3}
   - {fileID: 21300000, guid: 67a863b47942f414cb5601bce374213b, type: 3}
@@ -6940,9 +6866,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 603d0b5db583a4ecd8767bba4c021a02, type: 3}
   - {fileID: 21300000, guid: 5216296f93c7e431fa73b5507dee5ef7, type: 3}
   - {fileID: 21300000, guid: f969651eb6a1c4d89883905510edae9f, type: 3}
-  index: 4
-  bonusController: {fileID: 1923439557}
-  WinValueText: {fileID: 0}
 --- !u!1 &602423015
 GameObject:
   m_ObjectHideFlags: 0
@@ -10727,7 +10650,6 @@ RectTransform:
   - {fileID: 751315413}
   - {fileID: 2017430806}
   - {fileID: 1979586151}
-  - {fileID: 257213506}
   m_Father: {fileID: 1485219722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18873,9 +18795,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c5f3043a4484cb6ad59d69c7408cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 2
   socketManager: {fileID: 500036492}
-  GemButton: {fileID: 0}
+  bonusController: {fileID: 1923439557}
   imageAnimation: {fileID: 1616370235}
+  WinValueText: {fileID: 0}
+  GemButton: {fileID: 0}
   idleAnimation:
   - {fileID: 21300000, guid: 28d1326295ead4d0cbb6410362a9f52a, type: 3}
   - {fileID: 21300000, guid: 27d60182481cf4c1c98863a17c6af7c6, type: 3}
@@ -18916,9 +18841,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 03d3f16152a31477aad6799314e78fb8, type: 3}
   - {fileID: 21300000, guid: f042233f537044ed8a2a56621510a56c, type: 3}
   - {fileID: 21300000, guid: 1731cc641782b4190870bd763874fa63, type: 3}
-  index: 2
-  bonusController: {fileID: 1923439557}
-  WinValueText: {fileID: 0}
 --- !u!1 &1643718612
 GameObject:
   m_ObjectHideFlags: 0
@@ -22620,10 +22542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a413774277354543a59bb51cae97a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus_game: {fileID: 929982823}
   slotManager: {fileID: 2046803210}
-  raycastPanel: {fileID: 257213505}
   _audioManager: {fileID: 7113384613047857503}
+  bonus_game: {fileID: 929982823}
   m_Score: {fileID: 9259607}
 --- !u!1 &1929622852
 GameObject:
@@ -24398,6 +24319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5425de25e7b479e921e2bb06840bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SocketManager: {fileID: 500036492}
+  audioController: {fileID: 7113384613047857503}
+  uiManager: {fileID: 377874625}
+  bonusController: {fileID: 1923439557}
+  gambleController: {fileID: 2118856088}
   myImages:
   - {fileID: 21300000, guid: b2536968bd892444b844223cabfca047, type: 3}
   - {fileID: 21300000, guid: a93f74bbe5bdb419abfc3ea3cc7ed98f, type: 3}
@@ -24509,11 +24435,6 @@ MonoBehaviour:
   WinLineSymbolList: []
   IconSizeFactor: 195
   SpaceFactor: 5
-  SocketManager: {fileID: 500036492}
-  audioController: {fileID: 7113384613047857503}
-  uiManager: {fileID: 377874625}
-  bonusController: {fileID: 1923439557}
-  gambleController: {fileID: 2118856088}
 --- !u!1 &2050569412
 GameObject:
   m_ObjectHideFlags: 0
@@ -25580,18 +25501,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1120d16b8ea7b4136b4f76b1cac17e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GambleParentUI: {fileID: 1835524851}
-  GambleStartButton: {fileID: 1533432923}
   socketManager: {fileID: 500036492}
   audioController: {fileID: 7113384613047857503}
+  slotController: {fileID: 2046803210}
+  GambleParentUI: {fileID: 1835524851}
+  GambleButtonsParent: {fileID: 643549636}
+  LoadingScreenUI: {fileID: 1319254408}
+  GambleStartButton: {fileID: 1533432923}
+  GambleDoubleButton: {fileID: 1505404394}
+  GambleCollectButton: {fileID: 113292756}
   allcards:
   - {fileID: 1113455523}
   - {fileID: 1852183781}
   - {fileID: 66397154}
+  DealerCard_Script: {fileID: 662805899}
   GambleWinText: {fileID: 1489397743}
-  slotController: {fileID: 2046803210}
   HeartSpriteList:
-  - {fileID: 21300000, guid: b675c9dd40a324b0d89080f8d6dd66f5, type: 3}
   - {fileID: 21300000, guid: 034e29fafe23249dc96268bfac0e6f5a, type: 3}
   - {fileID: 21300000, guid: 11e4f858d87b14d8b8639ec2781e0ba4, type: 3}
   - {fileID: 21300000, guid: 262231adf28594b0f936775b4a154865, type: 3}
@@ -25604,8 +25529,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 025917fc2ac974bbabe50492f0baee6a, type: 3}
   - {fileID: 21300000, guid: 839762bb8441449f697f37de1bb9fda7, type: 3}
   - {fileID: 21300000, guid: c0c1c082f047f4ae5be31f97bb9d844d, type: 3}
+  - {fileID: 21300000, guid: b675c9dd40a324b0d89080f8d6dd66f5, type: 3}
   ClubSpriteList:
-  - {fileID: 21300000, guid: df2b93131e86d4587a3df35f94b122c2, type: 3}
   - {fileID: 21300000, guid: 415491bbbda5448dd872303d6a48a676, type: 3}
   - {fileID: 21300000, guid: 6861958de74304fcaa760516fccb7046, type: 3}
   - {fileID: 21300000, guid: e27f565cff89344db8591a9e9ca0712f, type: 3}
@@ -25618,8 +25543,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: daf9579ba1e8940779f9ddb172e7959f, type: 3}
   - {fileID: 21300000, guid: 6033124770d8b41cbbde67e8df05097e, type: 3}
   - {fileID: 21300000, guid: 9fd835a3edc8842819eae4d318b9ece2, type: 3}
+  - {fileID: 21300000, guid: df2b93131e86d4587a3df35f94b122c2, type: 3}
   SpadeSpriteList:
-  - {fileID: 21300000, guid: 8946cbe10351342d3ba373db14bdf167, type: 3}
   - {fileID: 21300000, guid: 5d1ca5a8115994a6ea408e014ecf89f5, type: 3}
   - {fileID: 21300000, guid: 73a58b96edce84fe4b8b488cf57e341d, type: 3}
   - {fileID: 21300000, guid: b9e3e99cb5cd84b5abbe7e5cc9f68114, type: 3}
@@ -25632,8 +25557,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 388e3c2ba61f4447294c6a12dd1a04b0, type: 3}
   - {fileID: 21300000, guid: a18a715e9e6d541fdbc22e1d62611547, type: 3}
   - {fileID: 21300000, guid: b021cb529dc0e444f93f645ca38d6a42, type: 3}
+  - {fileID: 21300000, guid: 8946cbe10351342d3ba373db14bdf167, type: 3}
   DiamondSpriteList:
-  - {fileID: 21300000, guid: b1af33909b296454182d866cd62b91a3, type: 3}
   - {fileID: 21300000, guid: 19b20963df5324735b87fbfb13378aab, type: 3}
   - {fileID: 21300000, guid: 7c66546fdb827471789abffbad8bb38b, type: 3}
   - {fileID: 21300000, guid: 702e2c766781549b9a02f3694a4cd172, type: 3}
@@ -25646,12 +25571,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e1800483732ed4a77957197dc3c8b3a5, type: 3}
   - {fileID: 21300000, guid: 179c2d8f9bfc848ecb34060043762ae5, type: 3}
   - {fileID: 21300000, guid: 97b16c2be24f74ec483a7a4c62f2bef8, type: 3}
+  - {fileID: 21300000, guid: b1af33909b296454182d866cd62b91a3, type: 3}
   cardCover: {fileID: 21300000, guid: e2db62992d7c94280843abd1d3172253, type: 3}
-  DealerCard_Script: {fileID: 662805899}
-  LoadingScreenUI: {fileID: 1319254408}
-  GambleButtonsParent: {fileID: 643549636}
-  GambleDoubleButton: {fileID: 1505404394}
-  GambleCollectButton: {fileID: 113292756}
   slider: {fileID: 337400242}
   WasAutoSpinOnBeforeGamble: 0
 --- !u!1 &2120640909

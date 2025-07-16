@@ -7,52 +7,35 @@ using DG.Tweening;
 
 public class GambleController : MonoBehaviour
 {
-  [SerializeField]
-  private GameObject GambleParentUI;
-  [SerializeField]
-  private Button GambleStartButton;
-  [SerializeField]
-  internal SocketIOManager socketManager;
-  [SerializeField]
-  private AudioController audioController;
-  [SerializeField]
-  internal List<CardFlip> allcards = new List<CardFlip>();
-  [SerializeField]
-  private TMP_Text GambleWinText;
-  [SerializeField]
-  private SlotBehaviour slotController;
-  [SerializeField]
-  private Sprite[] HeartSpriteList;
-  [SerializeField]
-  private Sprite[] ClubSpriteList;
-  [SerializeField]
-  private Sprite[] SpadeSpriteList;
-  [SerializeField]
-  private Sprite[] DiamondSpriteList;
-  [SerializeField]
-  private Sprite cardCover;
-  [SerializeField]
-  private CardFlip DealerCard_Script;
-  [SerializeField]
-  private GameObject LoadingScreenUI;
-  [SerializeField]
-  private GameObject GambleButtonsParent;
-  [SerializeField]
-  private Button GambleDoubleButton;
-  [SerializeField]
-  private Button GambleCollectButton;
-  [SerializeField]
-  private Image slider;
+  [SerializeField] internal SocketIOManager socketManager;
+  [SerializeField] private AudioController audioController;
+  [SerializeField] private SlotBehaviour slotController;
+  [SerializeField] private GameObject GambleParentUI;
+  [SerializeField] private GameObject GambleButtonsParent;
+  [SerializeField] private GameObject LoadingScreenUI;
+  [SerializeField] private Button GambleStartButton;
+  [SerializeField] private Button GambleDoubleButton;
+  [SerializeField] private Button GambleCollectButton;
+  [SerializeField] internal List<CardFlip> allcards = new List<CardFlip>();
+  [SerializeField] private CardFlip DealerCard_Script;
+  [SerializeField] private TMP_Text GambleWinText;
+  [SerializeField] private Sprite[] HeartSpriteList;
+  [SerializeField] private Sprite[] ClubSpriteList;
+  [SerializeField] private Sprite[] SpadeSpriteList;
+  [SerializeField] private Sprite[] DiamondSpriteList;
+  [SerializeField] private Sprite cardCover;
+  [SerializeField] private Image slider;
   [SerializeField] private bool WasAutoSpinOnBeforeGamble;
   private Sprite DealerCardSprite;
-  internal Sprite PlayerCardSprite;
   private Sprite RandomCardSprite1;
   private Sprite RandomCardSprite2;
   private Tweener Gamble_Tween_Scale = null;
+  private CardFlip SelectedCard = null;
+  internal Sprite PlayerCardSprite;
   internal bool WaitForGambleResult = true;
   internal bool isResult = false;
   internal bool Flipped = false;
-  private CardFlip SelectedCard = null;
+
   private void Start()
   {
     if (GambleStartButton) GambleStartButton.onClick.RemoveAllListeners();
@@ -76,25 +59,6 @@ public class GambleController : MonoBehaviour
     });
     ToggleButton(GambleCollectButton, false);
     ToggleButton(GambleDoubleButton, false);
-  }
-
-  internal void ToggleButton(Button button, bool toggle)
-  {
-    button.interactable = toggle;
-  }
-
-  private IEnumerator OnGambleCollectReset()
-  {
-    WaitForGambleResult = true;
-    socketManager.OnGambleCollect();
-    yield return new WaitUntil(() => !WaitForGambleResult);
-
-    if (WasAutoSpinOnBeforeGamble)
-    {
-      WasAutoSpinOnBeforeGamble = false;
-      slotController.AutoSpin();
-    }
-    StartCoroutine(GambleEnd());
   }
 
   void StartGamblegame(bool GambleInit = false)
@@ -128,35 +92,48 @@ public class GambleController : MonoBehaviour
       yield return null;
     }
 
-    WaitForGambleResult = true;
     if (init)
+    {
+      WaitForGambleResult = true;
       socketManager.OnGambleInit();
-    else
-      socketManager.OnGambleDraw();
-    yield return new WaitUntil(() => !WaitForGambleResult);
+      yield return new WaitUntil(() => !WaitForGambleResult);
+    }
 
     slider.fillAmount = 1;
     yield return new WaitForSeconds(1f);
     LoadingScreenUI.SetActive(false);
 
     Flipped = false;
+  }
+
+  internal IEnumerator GambleDraw()
+  {
+    WaitForGambleResult = true;
+    socketManager.OnGambleDraw();
+    yield return new WaitUntil(() => !WaitForGambleResult);
+
     ComputeCards();
   }
 
-  internal void ToggleGambleButton(bool toggle)
+  IEnumerator GambleEnd(bool lost = false)
   {
-    if (toggle)
-    {
-      Gamble_Tween_Scale = GambleStartButton.gameObject.GetComponent<RectTransform>().DOScale(new Vector2(1.18f, 1.18f), 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(0);
-    }
-    else
-    {
-      Gamble_Tween_Scale.Kill();
-      GambleStartButton.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
-    }
-    GambleStartButton.interactable = toggle;
-  }
+    if (lost)
+      yield return new WaitForSeconds(2f);
 
+    slotController.UpdateBalanceAndTotalWin();
+    if (GambleParentUI) GambleParentUI.SetActive(false);
+    allcards.ForEach((element) =>
+    {
+      element.Card_Button.image.sprite = cardCover;
+    });
+    DealerCard_Script.Card_Button.image.sprite = cardCover;
+
+    if (WasAutoSpinOnBeforeGamble)
+    {
+      WasAutoSpinOnBeforeGamble = false;
+      slotController.AutoSpin();
+    }
+  }
 
   private void ComputeCards()
   {
@@ -169,7 +146,7 @@ public class GambleController : MonoBehaviour
   private Sprite GetCardForValue(int value)
   {
     // Debug.Log("Card Value: " + value);
-    List<Sprite[]> CartSuites = new List<Sprite[]>
+    List<Sprite[]> CartSuites = new()
     {
       HeartSpriteList,
       ClubSpriteList,
@@ -181,11 +158,6 @@ public class GambleController : MonoBehaviour
     Sprite[] selectedSuite = CartSuites[randomSuiteIndex];
 
     return selectedSuite[value];
-  }
-
-  internal void CardFlipped(CardFlip card)
-  {
-    SelectedCard = card;
   }
 
   internal void FlipAllCards()
@@ -219,24 +191,9 @@ public class GambleController : MonoBehaviour
     }
   }
 
-  IEnumerator GambleEnd(bool lost = false)
+  internal void CardFlipped(CardFlip card)
   {
-    if(lost)
-      yield return new WaitForSeconds(2f);
-
-    slotController.UpdateBalanceAndTotalWin();
-    if (GambleParentUI) GambleParentUI.SetActive(false);
-    allcards.ForEach((element) =>
-    {
-      element.Card_Button.image.sprite = cardCover;
-    });
-    DealerCard_Script.Card_Button.image.sprite = cardCover;
-
-    if (WasAutoSpinOnBeforeGamble)
-    {
-      WasAutoSpinOnBeforeGamble = false;
-      slotController.AutoSpin();
-    }
+    SelectedCard = card;
   }
 
   private void OnGambleDoubleReset()
@@ -250,10 +207,36 @@ public class GambleController : MonoBehaviour
     Flipped = false;
   }
 
-  internal IEnumerator GambleDraw()
+  private IEnumerator OnGambleCollectReset()
   {
     WaitForGambleResult = true;
-    socketManager.OnGambleDraw();
+    socketManager.OnGambleCollect();
     yield return new WaitUntil(() => !WaitForGambleResult);
+
+    if (WasAutoSpinOnBeforeGamble)
+    {
+      WasAutoSpinOnBeforeGamble = false;
+      slotController.AutoSpin();
+    }
+    StartCoroutine(GambleEnd());
+  }
+
+  internal void ToggleGambleButton(bool toggle)
+  {
+    if (toggle)
+    {
+      Gamble_Tween_Scale = GambleStartButton.gameObject.GetComponent<RectTransform>().DOScale(new Vector2(1.18f, 1.18f), 1f).SetLoops(-1, LoopType.Yoyo).SetDelay(0);
+    }
+    else
+    {
+      Gamble_Tween_Scale.Kill();
+      GambleStartButton.gameObject.GetComponent<RectTransform>().localScale = Vector3.one;
+    }
+    GambleStartButton.interactable = toggle;
+  }
+
+  internal void ToggleButton(Button button, bool toggle)
+  {
+    button.interactable = toggle;
   }
 }
