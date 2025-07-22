@@ -193,6 +193,7 @@ public class SlotBehaviour : MonoBehaviour
   private IEnumerator StopAutoSpinCoroutine()
   {
     yield return new WaitUntil(() => !IsSpinning);
+    CheckAndActivateGamble();
     ToggleButtonGrp(true);
     if (AutoSpinRoutine != null || tweenroutine != null)
     {
@@ -347,7 +348,7 @@ public class SlotBehaviour : MonoBehaviour
     }
     if (IsTurboOn || IsFreeSpin)
     {
-      yield return new WaitForSeconds(0.1f);
+      StopSpinToggle = true;
     }
     else
     {
@@ -399,9 +400,9 @@ public class SlotBehaviour : MonoBehaviour
     if (!IsAutoSpin)
     {
       ToggleButtonGrp(true);
+      CheckAndActivateGamble();
     }
     IsSpinning = false;
-    CheckAndActivateGamble();
   }
 
   private void CheckAndActivateGamble()
