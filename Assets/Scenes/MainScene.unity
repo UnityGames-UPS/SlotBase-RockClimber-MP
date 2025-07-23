@@ -5447,7 +5447,6 @@ GameObject:
   m_Component:
   - component: {fileID: 500036491}
   - component: {fileID: 500036492}
-  - component: {fileID: 500036493}
   m_Layer: 0
   m_Name: SocketManager
   m_TagString: Untagged
@@ -5486,20 +5485,8 @@ MonoBehaviour:
   uiManager: {fileID: 377874625}
   gambleController: {fileID: 2118856088}
   bonusController: {fileID: 1923439557}
-  testToken: 4d957acd07334798a5333a092ddd922e
+  testToken: e1f926752eeb48d6a7055f464ce6f58a
   JSManager: {fileID: 99197459}
---- !u!114 &500036493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500036490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ebd9f5c201749cbbd9553f4b3a076a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &501915244
 GameObject:
   m_ObjectHideFlags: 0
@@ -22546,6 +22533,12 @@ MonoBehaviour:
   _audioManager: {fileID: 7113384613047857503}
   bonus_game: {fileID: 929982823}
   m_Score: {fileID: 9259607}
+  Gems:
+  - {fileID: 207245771}
+  - {fileID: 230480231}
+  - {fileID: 1616370236}
+  - {fileID: 395550251}
+  - {fileID: 579565103}
 --- !u!1 &1929622852
 GameObject:
   m_ObjectHideFlags: 0

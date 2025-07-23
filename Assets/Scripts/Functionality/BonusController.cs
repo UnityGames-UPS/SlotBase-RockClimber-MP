@@ -7,6 +7,7 @@ public class BonusController : MonoBehaviour
   [SerializeField] private AudioController _audioManager;
   [SerializeField] private GameObject bonus_game;
   [SerializeField] private TMP_Text m_Score;
+  [SerializeField] private BonusBreakGem[] Gems;
   private double TotalBonusWin = 0;
   internal bool isOpening;
   internal bool isFinished;
@@ -21,10 +22,10 @@ public class BonusController : MonoBehaviour
     isOpening = false;
     isFinished = false;
     WaitForBonusResult = false;
-
+    ResetGems();
     if (bonus_game) bonus_game.SetActive(true);
   }
-  
+
   internal void UpdateTotalWin(double value)
   {
     TotalBonusWin += value;
@@ -52,5 +53,13 @@ public class BonusController : MonoBehaviour
   internal void PlayLoseSound()
   {
     if (_audioManager) _audioManager.PlayBonusAudio("lose");
+  }
+
+  void ResetGems()
+  {
+    foreach (var gem in Gems)
+    {
+      gem.Selected = false;
+    }
   }
 }

@@ -14,6 +14,7 @@ public class BonusBreakGem : MonoBehaviour
   [SerializeField] private Button GemButton;
   [SerializeField] private List<Sprite> idleAnimation;
   [SerializeField] private List<Sprite> breakAnimation;
+  internal bool Selected = false;
 
   void Awake()
   {
@@ -30,9 +31,9 @@ public class BonusBreakGem : MonoBehaviour
 
   void OpenGem()
   {
-    if (bonusController.isOpening || bonusController.isFinished)
+    if (bonusController.isOpening || bonusController.isFinished || Selected)
       return;
-
+    Selected = true;
     StartCoroutine(OpenGemCoroutine());
   }
 
