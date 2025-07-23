@@ -366,6 +366,7 @@ public class SlotBehaviour : MonoBehaviour
     {
       yield return StopTweening(5, Slot_Transform[i], i, StopSpinToggle);
     }
+    audioController.StopWLAaudio();
     StopSpinToggle = false;
     yield return alltweens[^1].WaitForCompletion();
     KillAllTweens();
