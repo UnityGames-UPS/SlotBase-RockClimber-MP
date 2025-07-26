@@ -83,6 +83,9 @@ public class UIManager : MonoBehaviour
   [SerializeField]
   private GameObject LBPopup_Object;
 
+  [Header("Reconnection Popup")]
+  [SerializeField] private GameObject ReconnectionPopup_Object;
+
   [Header("Disconnection Popup")]
   [SerializeField]
   private Button CloseDisconnect_Button;
@@ -159,7 +162,7 @@ public class UIManager : MonoBehaviour
     if (YesQuit_Button) YesQuit_Button.onClick.AddListener(CallOnExitFunction);
 
     if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
-    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction();}); //BackendChanges
+    if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(delegate { CallOnExitFunction(); }); //BackendChanges
 
     if (CloseAD_Button) CloseAD_Button.onClick.RemoveAllListeners();
     if (CloseAD_Button) CloseAD_Button.onClick.AddListener(CallOnExitFunction);
@@ -172,9 +175,19 @@ public class UIManager : MonoBehaviour
 
     if (SkipWinAnimation) SkipWinAnimation.onClick.RemoveAllListeners();
     if (SkipWinAnimation) SkipWinAnimation.onClick.AddListener(delegate { SkipWin(); });
-
   }
 
+  internal void CheckAndClosePopups()
+  {
+    if (ReconnectionPopup_Object.activeInHierarchy)
+    {
+      ClosePopup(ReconnectionPopup_Object);
+    }
+    if (DisconnectPopup_Object.activeInHierarchy)
+    {
+      ClosePopup(DisconnectPopup_Object);
+    }
+  }
 
   void SkipWin()
   {
@@ -208,6 +221,11 @@ public class UIManager : MonoBehaviour
     {
       OpenPopup(DisconnectPopup_Object);
     }
+  }
+
+  internal void ReconnectionPopup()
+  {
+    OpenPopup(ReconnectionPopup_Object);
   }
 
   internal void InitialiseUIData(Paylines symbolsText)
@@ -249,9 +267,12 @@ public class UIManager : MonoBehaviour
 
   private void CallOnExitFunction()
   {
-    isExit = true;
-    audioController.PlayButtonAudio();
-    slotBehaviour.CallCloseSocket();
+    if (!isExit)
+    {
+      isExit = true;
+      audioController.PlayButtonAudio();
+      slotBehaviour.CallCloseSocket();
+    }
   }
 
   internal void PopulateWin(int type, double amount)
@@ -331,7 +352,6 @@ public class UIManager : MonoBehaviour
 
   private void OpenPopup(GameObject Popup)
   {
-    if (audioController) audioController.PlayButtonAudio();
     if (Popup) Popup.SetActive(true);
     if (MainPopup_Object) MainPopup_Object.SetActive(true);
   }
