@@ -152,6 +152,8 @@ public class SocketIOManager : MonoBehaviour
     gameSocket.On<string>("alert", OnSocketAlert);
     gameSocket.On<string>("pong", OnPongReceived);
     gameSocket.On<string>("AnotherDevice", OnSocketOtherDevice);
+
+    manager.Open();
   }
 
   // Connected event handler implementation
