@@ -38,7 +38,8 @@ public class SlotBehaviour : MonoBehaviour
   [SerializeField] private Button AutoSpin_Button;
   [SerializeField] private Button AutoSpinStop_Button;
   [SerializeField] private Button MaxBet_Button;
-  [SerializeField] private Button Betone_button;
+  [SerializeField] private Button BetPlus_Button;
+  [SerializeField] private Button BetMinus_Button;
   [SerializeField] private Button Turbo_Button;
   [SerializeField] private Button StopSpin_Button;
   [SerializeField] private Sprite[] TurboToggleSprites;
@@ -76,8 +77,11 @@ public class SlotBehaviour : MonoBehaviour
     if (MaxBet_Button) MaxBet_Button.onClick.RemoveAllListeners();
     if (MaxBet_Button) MaxBet_Button.onClick.AddListener(MaxBet);
 
-    if (Betone_button) Betone_button.onClick.RemoveAllListeners();
-    if (Betone_button) Betone_button.onClick.AddListener(OnBetOne);
+    if (BetPlus_Button) BetPlus_Button.onClick.RemoveAllListeners();
+    if (BetPlus_Button) BetPlus_Button.onClick.AddListener(() => ChangeBet(true));
+
+    if (BetMinus_Button) BetMinus_Button.onClick.RemoveAllListeners();
+    if (BetMinus_Button) BetMinus_Button.onClick.AddListener(() => ChangeBet(false));
 
     if (AutoSpin_Button) AutoSpin_Button.onClick.RemoveAllListeners();
     if (AutoSpin_Button) AutoSpin_Button.onClick.AddListener(AutoSpin);
@@ -259,16 +263,24 @@ public class SlotBehaviour : MonoBehaviour
     currentTotalBet = SocketManager.initialData.gameData.bets[BetCounter] * Lines;
   }
 
-  void OnBetOne()
+  private void ChangeBet(bool IncDec)
   {
     if (audioController) audioController.PlayButtonAudio();
-    if (BetCounter < SocketManager.initialData.gameData.bets.Count - 1)
+    if (IncDec)
     {
       BetCounter++;
+      if (BetCounter >= SocketManager.initialData.gameData.bets.Count)
+      {
+        BetCounter = 0; // Loop back to the first bet
+      }
     }
     else
     {
-      BetCounter = 0;
+      BetCounter--;
+      if (BetCounter < 0)
+      {
+        BetCounter = SocketManager.initialData.gameData.bets.Count - 1; // Loop to the last bet
+      }
     }
     if (TotalBet_text) TotalBet_text.text = (SocketManager.initialData.gameData.bets[BetCounter] * Lines).ToString();
     currentTotalBet = SocketManager.initialData.gameData.bets[BetCounter] * Lines;
@@ -445,9 +457,10 @@ public class SlotBehaviour : MonoBehaviour
   void ToggleButtonGrp(bool toggle)
   {
     if (SlotStart_Button) SlotStart_Button.interactable = toggle;
-    if (Betone_button) Betone_button.interactable = toggle;
     if (MaxBet_Button) MaxBet_Button.interactable = toggle;
     if (AutoSpin_Button) AutoSpin_Button.interactable = toggle;
+    if (BetPlus_Button) BetPlus_Button.interactable = toggle;
+    if (BetMinus_Button) BetMinus_Button.interactable = toggle;
   }
 
   internal void UpdateBalanceAndTotalWin()
