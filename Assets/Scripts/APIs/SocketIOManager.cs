@@ -179,6 +179,7 @@ public class SocketIOManager : MonoBehaviour
     Debug.LogWarning("⚠️ Disconnected from server.");
     isConnected = false;
     ResetPingRoutine();
+    uiManager.DisconnectionPopup();
   } //Back2 end
 
   private void OnPongReceived(string data) //Back2 Start
